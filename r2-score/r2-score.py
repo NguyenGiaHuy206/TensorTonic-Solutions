@@ -9,15 +9,15 @@ def r2_score(y_true, y_pred) -> float:
     """
     
     # Write code here
-    y_true = np.array(y_true)
     y_pred = np.array(y_pred)
+    y_true = np.array(y_true)
+    if np.all(y_true == y_pred):
+        return 1.0
 
-    if np.all(y_true == y_true[0]):
-        return 1.0 if np.all(y_true == y_pred) else 0.0
-
-    ss_res = np.sum((y_true - y_pred) ** 2)
-    ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
-
-    return 1 - ss_res / ss_tot
+    if np.mean(y_true) == 1:
+        return 0.0
+    SSres = np.sum((y_true - y_pred) ** 2)
+    SStot = np.sum((y_true - np.mean(y_true)) ** 2)
+    return 1 - SSres / SStot
 
     pass
