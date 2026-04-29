@@ -17,6 +17,4 @@ def hinge_loss(y_true, y_score, margin=1.0, reduction="mean") -> float:
         return np.mean(losses)
     elif reduction == "sum":
         return np.sum(losses)
-    else:
-        return losses
     pass
